@@ -1,0 +1,12 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Handmade basket placeholder</title>
+  <desc id="desc">Illustrated woven basket in soft neutral tones.</desc>
+  <rect width="800" height="800" fill="#FFF6F8"/>
+  <circle cx="630" cy="622" r="220" fill="#FFD9CA"/>
+  <circle cx="162" cy="150" r="172" fill="#FFE9EF"/>
+  <path d="M180 326H620L560 650C552 692 516 722 474 722H326C284 722 248 692 240 650L180 326Z" fill="#E4D0BD"/>
+  <path d="M198 412H602M218 506H582M240 598H560" stroke="#9D6F52" stroke-width="18" stroke-linecap="round"/>
+  <path d="M258 332C284 220 362 174 452 206C520 230 558 290 560 332" stroke="#B8896A" stroke-width="32" stroke-linecap="round"/>
+  <path d="M286 344L326 708M388 344L400 722M502 344L466 708" stroke="#B8896A" stroke-width="14" stroke-linecap="round"/>
+  <path d="M110 250C214 204 324 212 438 272" stroke="#EF819C" stroke-width="10" stroke-linecap="round" stroke-dasharray="2 24"/>
+</svg>

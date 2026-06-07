@@ -1,0 +1,15 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Handmade accessories placeholder</title>
+  <desc id="desc">Illustrated handmade accessories with scrunchies, headband, and small pouches.</desc>
+  <rect width="800" height="800" fill="#FFF8F4"/>
+  <circle cx="618" cy="174" r="190" fill="#FFE9EF"/>
+  <circle cx="190" cy="636" r="214" fill="#FFD9CA"/>
+  <path d="M194 294C254 214 378 214 438 294C376 362 254 362 194 294Z" fill="#F9AEBF"/>
+  <path d="M240 294C288 326 344 326 396 294" stroke="#FFF8F4" stroke-width="18" stroke-linecap="round"/>
+  <path d="M498 254C594 220 682 274 694 374C636 408 558 402 512 346C490 320 486 286 498 254Z" fill="#FFD1DC"/>
+  <path d="M548 284C596 326 634 344 676 342" stroke="#9D6F52" stroke-width="14" stroke-linecap="round"/>
+  <path d="M218 492H448C484 492 514 522 514 558V650C514 684 486 712 452 712H218C184 712 156 684 156 650V558C156 522 184 492 218 492Z" fill="#F79889"/>
+  <path d="M214 560H456M214 622H456" stroke="#FFF6F8" stroke-width="16" stroke-linecap="round"/>
+  <path d="M536 534C588 470 696 496 710 594C724 696 606 730 536 654C506 622 506 570 536 534Z" fill="#F1E8DD"/>
+  <path d="M566 578C610 612 652 620 696 594" stroke="#B8896A" stroke-width="14" stroke-linecap="round"/>
+</svg>

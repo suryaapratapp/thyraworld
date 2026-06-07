@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: #fff8f4;
+  }
+
+  ::selection {
+    background: #ffd1dc;
+    color: #624533;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-14 sm:py-16 lg:py-20;
+  }
+
+  .field-input {
+    @apply w-full rounded-2xl border border-peach-100 bg-white px-4 py-3 text-sm font-medium text-clay-700 outline-none transition placeholder:text-clay-300 focus:border-blush-300 focus:ring-4 focus:ring-blush-100;
+  }
+
+  .prose-thyra {
+    @apply space-y-5 text-base leading-8 text-clay-600 sm:text-lg;
+  }
+}

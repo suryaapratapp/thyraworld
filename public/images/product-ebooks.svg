@@ -1,0 +1,12 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Creative e-book placeholder</title>
+  <desc id="desc">Illustrated pastel handmade guide cover.</desc>
+  <rect width="800" height="800" fill="#FFF6F8"/>
+  <circle cx="626" cy="156" r="190" fill="#FFD9CA"/>
+  <circle cx="168" cy="666" r="224" fill="#FFE9EF"/>
+  <path d="M232 128H562C592 128 616 152 616 182V688C616 718 592 744 562 744H232C202 744 178 718 178 688V182C178 152 202 128 232 128Z" fill="#FFF8F4"/>
+  <path d="M236 174H558V690H236V174Z" fill="#F9AEBF"/>
+  <path d="M292 276H500M292 342H500M292 408H434" stroke="#FFF8F4" stroke-width="22" stroke-linecap="round"/>
+  <path d="M290 534C342 484 442 484 494 534C440 582 342 582 290 534Z" fill="#FFD9CA"/>
+  <path d="M342 534C374 554 422 554 462 534" stroke="#9D6F52" stroke-width="14" stroke-linecap="round"/>
+</svg>
