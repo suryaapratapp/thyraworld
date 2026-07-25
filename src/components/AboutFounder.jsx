@@ -1,32 +1,34 @@
-import { Heart, Sparkles } from "lucide-react";
+import { Quote } from "lucide-react";
+import ShubhamCharacter from "./ShubhamCharacter.jsx";
 
 export default function AboutFounder() {
   return (
-    <section className="section-padding bg-white/54">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
+    <section className="section-padding relative overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-soft" />
+
+      <div className="shell relative grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
         <div className="relative">
-          <div className="sticky top-28 overflow-hidden rounded-3xl border border-white/80 bg-warm-radial p-6 shadow-soft">
-            <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-3xl bg-white text-blush-500 shadow-sm">
-              <Heart aria-hidden="true" size={30} />
+          <div className="glass sticky top-24 overflow-hidden p-7">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 animate-drift rounded-full bg-yarn-ember/25 blur-3xl" />
+            <div className="relative">
+              <ShubhamCharacter className="mx-auto -mt-2 mb-2 w-full max-w-[19rem]" />
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-yarn-coral">
+                Founder Story
+              </p>
+              <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] text-gradient sm:text-5xl">
+                Meet Shubham Salehria
+              </h2>
+              <p className="mt-5 text-base leading-7 text-bone-400">
+                Yarn in one hand, phone in the other, laptop open, orders going out —
+                turning colour, patience, and lived experience into handmade joy.
+              </p>
             </div>
-            <p className="mb-3 text-sm font-bold uppercase tracking-[0.18em] text-blush-500">
-              Founder Story
-            </p>
-            <h2 className="font-display text-4xl font-bold leading-tight text-clay-700 sm:text-5xl">
-              Meet Shubham Salehria
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-clay-600">
-              A brave, creative heart behind Thyra World, turning colour, patience,
-              and lived experience into handmade joy.
-            </p>
           </div>
         </div>
 
-        <div className="rounded-3xl border border-peach-100 bg-white p-6 shadow-soft sm:p-8">
+        <div className="glass p-6 sm:p-9">
           <div className="prose-thyra">
-            <p>
-              Meet Shubham Salehria, the founder of Thyra World.
-            </p>
+            <p>Meet Shubham Salehria, the founder of Thyra World.</p>
             <p>
               Shubham is a 32-year-old woman with a story that did not exactly come
               with an “easy mode” setting. Since childhood, hospitals, appointments,
@@ -79,11 +81,14 @@ export default function AboutFounder() {
               imperfectly perfect, and created with love.
             </p>
           </div>
-          <div className="mt-8 rounded-3xl bg-peach-50 p-5 text-lg font-bold leading-8 text-clay-700">
-            <Sparkles aria-hidden="true" className="mb-3 text-blush-500" size={24} />
-            “Thyra World is for everyone who believes that beautiful things can come
-            from brave stories.”
-          </div>
+
+          <blockquote className="relative mt-9 overflow-hidden rounded-3xl border border-yarn-coral/20 bg-yarn-coral/[0.06] p-6">
+            <Quote aria-hidden="true" className="mb-3 text-yarn-coral" size={22} />
+            <p className="font-display text-lg font-bold leading-8 text-bone-100">
+              “Thyra World is for everyone who believes that beautiful things can come
+              from brave stories.”
+            </p>
+          </blockquote>
         </div>
       </div>
     </section>

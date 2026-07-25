@@ -1,6 +1,7 @@
 import { HeartHandshake, MapPin, Palette, Users } from "lucide-react";
 import AboutFounder from "../components/AboutFounder.jsx";
 import ContactCTA from "../components/ContactCTA.jsx";
+import JoinSection from "../components/JoinSection.jsx";
 import SectionHeader from "../components/SectionHeader.jsx";
 
 const values = [
@@ -9,39 +10,47 @@ const values = [
     description:
       "Each product is handmade with care, colour, and the small details that make handmade feel personal.",
     icon: HeartHandshake,
+    accent: "#FF6B4A",
   },
   {
     title: "Custom creativity",
     description:
       "Listed categories and other customer ideas can be customised according to requirements.",
     icon: Palette,
+    accent: "#A78BFA",
   },
   {
     title: "Across India",
     description:
-      "Thyra World delivers handmade products across India and supports enquiries through WhatsApp.",
+      "Thyra World delivers handmade products across India and supports enquiries through WhatsApp and email.",
     icon: MapPin,
+    accent: "#4ECDC4",
   },
   {
     title: "Women-led dream",
     description:
       "Run by women from the same family, with a future vision to support and hire more women.",
     icon: Users,
+    accent: "#FFB627",
   },
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      <section className="section-padding bg-warm-radial">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div className="relative">
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-mesh-hero" />
+      <div className="pointer-events-none absolute inset-0 -z-10 grid-bg opacity-50" />
+
+      <section className="section-padding">
+        <div className="shell">
           <SectionHeader
             eyebrow="About Us"
-            title="A women-led handmade brand built with love, patience, colour, and everyday madness"
+            icon={Users}
+            title="A women-led handmade brand built with love, patience, and colour"
             description="Thyra World creates handmade and customisable products that feel warm, useful, personal, and gifting-ready."
           />
 
-          <div className="rounded-3xl border border-peach-100 bg-white p-6 shadow-soft sm:p-8 lg:p-10">
+          <div className="glass p-6 sm:p-9 lg:p-12">
             <div className="prose-thyra">
               <p>
                 Thyra World is a handmade brand created with love, patience, colour, and
@@ -65,21 +74,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <section className="pb-4">
+        <div className="shell">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {values.map((value) => {
               const Icon = value.icon;
               return (
-                <article
-                  key={value.title}
-                  className="rounded-2xl border border-peach-100 bg-white p-5 shadow-soft"
-                >
-                  <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-peach-100 text-blush-500">
-                    <Icon aria-hidden="true" size={21} />
+                <article key={value.title} className="glass glass-hover group relative overflow-hidden p-6">
+                  <span
+                    className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-0 blur-3xl transition duration-500 group-hover:opacity-40"
+                    style={{ background: value.accent }}
+                  />
+                  <span
+                    className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10"
+                    style={{ background: `${value.accent}1A`, color: value.accent }}
+                  >
+                    <Icon aria-hidden="true" size={22} />
                   </span>
-                  <h2 className="text-lg font-bold text-clay-700">{value.title}</h2>
-                  <p className="mt-3 text-sm leading-6 text-clay-500">{value.description}</p>
+                  <h2 className="relative font-display text-lg font-bold text-bone-50">
+                    {value.title}
+                  </h2>
+                  <p className="relative mt-3 text-sm leading-6 text-bone-400">
+                    {value.description}
+                  </p>
                 </article>
               );
             })}
@@ -88,7 +105,8 @@ export default function AboutPage() {
       </section>
 
       <AboutFounder />
+      <JoinSection />
       <ContactCTA title="Have a custom handmade idea?" />
-    </>
+    </div>
   );
 }

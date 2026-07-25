@@ -1,7 +1,17 @@
-export const instagramProfile = "https://www.instagram.com/thyraworld/";
-export const shubhamInstagramProfile = "https://www.instagram.com/shubhamsalehria/";
-export const whatsappNumber = "918894303410";
-export const whatsappBaseUrl = `https://wa.me/${whatsappNumber}`;
+import { instagramProfile } from "./site.js";
+import { bags } from "./bags.js";
+
+export { bags, bagById } from "./bags.js";
+
+// Contact details live in site.js now — re-exported so existing imports keep working.
+export {
+  instagramProfile,
+  shubhamInstagramProfile,
+  whatsappNumber,
+  whatsappBaseUrl,
+  contactEmail,
+  createWhatsAppLink,
+} from "./site.js";
 
 export const productCategories = [
   "Bags",
@@ -19,29 +29,15 @@ export const productCategories = [
 
 export const featuredCategories = [...productCategories, "E-books"];
 
+/**
+ * `photo` is the real product photograph and `image` is the illustrated
+ * fallback. Components prefer `photo` when it's set, so adding real photography
+ * later is a one-line change per product — drop the file into
+ * public/images/bags/ and fill in the path. Nothing else needs to move.
+ */
 export const products = [
-  {
-    id: "crochet-everyday-tote",
-    name: "Everyday Crochet Tote",
-    category: "Bags",
-    description:
-      "A roomy handmade tote for errands, casual days, and gifting-ready everyday style.",
-    image: "/images/product-bags.svg",
-    instagramUrl: instagramProfile,
-    isCustomisable: true,
-    isHandmade: true,
-  },
-  {
-    id: "mini-market-bag",
-    name: "Mini Market Bag",
-    category: "Bags",
-    description:
-      "A compact carry bag with soft texture and colour options for your daily essentials.",
-    image: "/images/product-bags.svg",
-    instagramUrl: instagramProfile,
-    isCustomisable: true,
-    isHandmade: true,
-  },
+  // Real photographed bags come first — they're the strongest thing we have.
+  ...bags,
   {
     id: "woven-desk-basket",
     name: "Woven Desk Basket",
@@ -49,6 +45,8 @@ export const products = [
     description:
       "A warm little organiser for stationery, skincare, craft supplies, or tiny treasures.",
     image: "/images/product-baskets.svg",
+    photo: null,
+    colourways: ["cream", "camel", "sage"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -60,6 +58,8 @@ export const products = [
     description:
       "A soft handmade basket that can be styled for hampers, festivals, and special days.",
     image: "/images/product-baskets.svg",
+    photo: null,
+    colourways: ["rose", "amber", "cream"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -71,6 +71,8 @@ export const products = [
     description:
       "Pretty handmade coasters that bring a sweet handmade detail to tea and coffee time.",
     image: "/images/product-coasters.svg",
+    photo: null,
+    colourways: ["rose", "cream", "coral"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -82,6 +84,8 @@ export const products = [
     description:
       "A soft floral-inspired pair for desks, bedside tables, and thoughtful gifting.",
     image: "/images/product-coasters.svg",
+    photo: null,
+    colourways: ["sage", "cream", "amber"],
     instagramUrl: instagramProfile,
     isCustomisable: false,
     isHandmade: true,
@@ -93,6 +97,8 @@ export const products = [
     description:
       "A snug handmade mug cozy that makes warm drinks feel a little more special.",
     image: "/images/product-cozies.svg",
+    photo: null,
+    colourways: ["terracotta", "cream", "forest"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -104,6 +110,8 @@ export const products = [
     description:
       "A charming cozy sleeve with a handmade finish and colour choices for your mug.",
     image: "/images/product-cozies.svg",
+    photo: null,
+    colourways: ["mustard", "camel", "charcoal"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -115,6 +123,8 @@ export const products = [
     description:
       "Gentle, pretty scrunchies for everyday wear, gifting, and matching outfits.",
     image: "/images/product-accessories.svg",
+    photo: null,
+    colourways: ["rose", "lavender", "cream"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -126,6 +136,8 @@ export const products = [
     description:
       "A colourful braided cord for charms, keys, bags, bookmarks, or custom styling.",
     image: "/images/product-accessories.svg",
+    photo: null,
+    colourways: ["violet", "sky", "mint"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -137,6 +149,8 @@ export const products = [
     description:
       "A soft handmade AirPod case cover that adds protection, colour, and personality.",
     image: "/images/product-accessories.svg",
+    photo: null,
+    colourways: ["coral", "cream", "sage"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -148,6 +162,8 @@ export const products = [
     description:
       "A comfortable handmade headband for soft everyday styling and easy gifting.",
     image: "/images/product-accessories.svg",
+    photo: null,
+    colourways: ["cream", "rose", "camel"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -159,6 +175,8 @@ export const products = [
     description:
       "A tiny handmade holder that keeps lip balm close on bags, keys, and pouches.",
     image: "/images/product-accessories.svg",
+    photo: null,
+    colourways: ["amber", "coral", "mint"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -170,6 +188,8 @@ export const products = [
     description:
       "A sweet handmade bookmark for readers, journals, planners, and bookish gifts.",
     image: "/images/product-accessories.svg",
+    photo: null,
+    colourways: ["rose", "sage", "cream"],
     instagramUrl: instagramProfile,
     isCustomisable: false,
     isHandmade: true,
@@ -181,6 +201,8 @@ export const products = [
     description:
       "A handmade pouch for makeup, stationery, tech bits, coins, or little essentials.",
     image: "/images/product-accessories.svg",
+    photo: null,
+    colourways: ["denim", "cream", "coral"],
     instagramUrl: instagramProfile,
     isCustomisable: true,
     isHandmade: true,
@@ -216,11 +238,3 @@ export const ebooks = [
     instagramUrl: "",
   },
 ];
-
-export function createWhatsAppLink(productName) {
-  const message = productName
-    ? `Hi Thyra World, I'm interested in ${productName}. Please share more details.`
-    : "Hi Thyra World, I would like to enquire about your handmade products.";
-
-  return `${whatsappBaseUrl}?text=${encodeURIComponent(message)}`;
-}

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,30 +7,114 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   body {
     margin: 0;
     min-width: 320px;
-    background: #fff8f4;
+    background: #0b0d12;
+    color: #f4f1ec;
+    -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background: #ffd1dc;
-    color: #624533;
+    background: rgba(255, 107, 74, 0.32);
+    color: #f7f5f1;
+  }
+
+  /* Dark-theme scrollbar so the chrome doesn't break the mood */
+  ::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b0d12;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #252a35;
+    border-radius: 999px;
+    border: 3px solid #0b0d12;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a404e;
+  }
+
+  :focus-visible {
+    outline: 2px solid #ff6b4a;
+    outline-offset: 3px;
   }
 }
 
 @layer components {
   .section-padding {
-    @apply py-14 sm:py-16 lg:py-20;
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  .shell {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Frosted card — the core surface of the Midnight Yarn system */
+  .glass {
+    @apply rounded-3xl border border-white/[0.08] bg-white/[0.035] shadow-glass backdrop-blur-xl;
+  }
+
+  .glass-hover {
+    @apply transition duration-300 hover:-translate-y-1 hover:border-white/[0.16] hover:bg-white/[0.06] hover:shadow-lift;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.18em] text-bone-300 backdrop-blur;
   }
 
   .field-input {
-    @apply w-full rounded-2xl border border-peach-100 bg-white px-4 py-3 text-sm font-medium text-clay-700 outline-none transition placeholder:text-clay-300 focus:border-blush-300 focus:ring-4 focus:ring-blush-100;
+    @apply w-full rounded-2xl border border-white/10 bg-ink-800/80 px-4 py-3 text-sm font-medium text-bone-100 outline-none transition placeholder:text-bone-500 focus:border-yarn-coral/60 focus:bg-ink-800 focus:ring-4 focus:ring-yarn-coral/10;
+  }
+
+  .field-label {
+    @apply mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-bone-400;
   }
 
   .prose-thyra {
-    @apply space-y-5 text-base leading-8 text-clay-600 sm:text-lg;
+    @apply space-y-5 text-base leading-8 text-bone-300 sm:text-lg;
+  }
+
+  /* Gradient text used sparingly for hero + section titles */
+  .text-gradient {
+    @apply bg-gradient-to-br from-bone-50 via-bone-100 to-bone-300 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-yarn {
+    @apply bg-gradient-to-r from-yarn-coral via-yarn-amber to-yarn-violet bg-clip-text text-transparent;
+  }
+
+  /* Faint technical grid — the "futuristic" substrate behind dark sections */
+  .grid-bg {
+    @apply bg-grid-faint bg-grid;
+  }
+}
+
+@layer utilities {
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, black 62%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 62%, transparent 100%);
+  }
+
+  .mask-fade-edges {
+    -webkit-mask-image: linear-gradient(to right, transparent, black 9%, black 91%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 9%, black 91%, transparent);
+  }
+}
+
+/* Respect users who'd rather not have the yarn strands moving */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

@@ -1,23 +1,23 @@
 import {
+  ArrowRight,
   Gift,
   HeartHandshake,
-  Instagram,
   MapPin,
-  MessageCircle,
-  Scissors,
+  Palette,
   Sparkles,
   Wand2,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import Button from "../components/Button.jsx";
 import CategoryCard from "../components/CategoryCard.jsx";
 import ContactCTA from "../components/ContactCTA.jsx";
+import InstagramSection from "../components/InstagramSection.jsx";
+import JoinSection from "../components/JoinSection.jsx";
 import SectionHeader from "../components/SectionHeader.jsx";
-import {
-  createWhatsAppLink,
-  featuredCategories,
-  instagramProfile,
-  shubhamInstagramProfile,
-} from "../data/products.js";
+import YarnStrands from "../components/YarnStrands.jsx";
+import ProductPreview from "../components/studio/ProductPreview.jsx";
+import { featuredCategories } from "../data/products.js";
+import { getYarn } from "../data/yarns.js";
 
 const whyCards = [
   {
@@ -25,141 +25,251 @@ const whyCards = [
     description:
       "Every piece is created slowly, thoughtfully, and with a real person’s hands behind it.",
     icon: HeartHandshake,
+    accent: "#FF6B4A",
   },
   {
-    title: "Custom orders available",
+    title: "Customised for you",
     description:
-      "Colours, sizes, gift ideas, and little details can be discussed directly on WhatsApp.",
+      "Want a piece in a different colour, size, or stitch? We remake any design your way.",
     icon: Wand2,
+    accent: "#A78BFA",
   },
   {
     title: "Delivered across India",
     description:
       "Thyra World ships handmade favourites to homes, friends, and loved ones across India.",
     icon: MapPin,
+    accent: "#4ECDC4",
   },
   {
     title: "Women-led family business",
     description:
       "A family-run brand with a dream of creating more meaningful work for women.",
     icon: Gift,
+    accent: "#FFB627",
   },
 ];
 
-const instagramProfiles = [
-  {
-    title: "Thyra World",
-    handle: "@thyraworld",
-    description:
-      "Handmade products, custom orders, reels, product videos, and new collections.",
-    href: instagramProfile,
-    icon: Sparkles,
-  },
-  {
-    title: "Shubham Salehria",
-    handle: "@shubhamsalehria",
-    description:
-      "Founder’s journey, personal reflections, creativity, writing, and inspiration.",
-    href: shubhamInstagramProfile,
-    icon: HeartHandshake,
-  },
-];
+// Rotating colourways for the hero preview — shows off the studio at a glance.
+const heroDesign = { body: "coral", accent: "cream", handle: "camel" };
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden bg-warm-radial">
-        <div className="absolute left-8 top-24 h-44 w-44 rounded-full bg-blush-200/46 blur-3xl" />
-        <div className="absolute bottom-24 right-10 h-56 w-56 rounded-full bg-peach-200/70 blur-3xl" />
-        <div className="mx-auto grid min-h-[calc(100vh-150px)] max-w-7xl items-center gap-5 px-4 py-6 sm:gap-10 sm:px-6 sm:py-12 lg:grid-cols-[1.02fr_0.98fr] lg:px-8 lg:py-14">
-          <div className="relative z-10">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/60 px-4 py-2 text-sm font-bold text-blush-500 shadow-sm backdrop-blur-lg">
-              <Sparkles aria-hidden="true" size={16} />
-              Handmade, customisable, India-wide delivery
-            </div>
-            <h1 className="font-display text-4xl font-bold leading-[1.05] text-clay-700 sm:text-6xl sm:leading-[1.04] lg:text-7xl">
-              Handmade with Love, Styled for Everyday Joy
+      {/* ---------------------------- HERO ---------------------------- */}
+      <section className="relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-mesh-hero" />
+        <div className="pointer-events-none absolute inset-0 -z-10 grid-bg opacity-60" />
+        <YarnStrands className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[560px] w-full opacity-70" />
+
+        <div className="shell grid min-h-[calc(100vh-140px)] items-center gap-10 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:py-16">
+          <div className="relative z-10 animate-fade-up">
+            <span className="eyebrow">
+              <Sparkles aria-hidden="true" size={13} />
+              Handmade · Customisable · India-wide delivery
+            </span>
+
+            <h1 className="mt-7 font-display text-[2.6rem] font-bold leading-[1.02] sm:text-6xl lg:text-7xl">
+              <span className="text-gradient">Handmade with love,</span>
+              <br />
+              <span className="text-gradient-yarn">made for everyday joy</span>
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-clay-600 sm:text-xl">
-              Discover beautifully handmade bags, baskets, accessories, cosy little
-              essentials, and custom creations from Thyra World.
+
+            <p className="mt-6 max-w-xl text-base leading-7 text-bone-400 sm:text-lg sm:leading-8">
+              Crocheted bags, baskets, accessories, and cosy little essentials — every
+              piece worked by hand in our own studio. Found one you love but want it in
+              a different colour? We&apos;ll make it that way.
             </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button to="/products">
-                <Scissors aria-hidden="true" size={18} />
-                Explore Products
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button to="/products" className="px-6 py-3.5">
+                Shop the collection
+                <ArrowRight aria-hidden="true" size={16} />
               </Button>
-              <Button
-                href={createWhatsAppLink()}
-                target="_blank"
-                rel="noreferrer"
-                variant="secondary"
-                aria-label="Enquire with Thyra World on WhatsApp"
-              >
-                <MessageCircle aria-hidden="true" size={18} />
-                Enquire on WhatsApp
+              <Button to="/studio" variant="secondary" className="px-6 py-3.5">
+                <Palette aria-hidden="true" size={18} />
+                Customise a piece
               </Button>
+            </div>
+
+            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              {[
+                { value: "11+", label: "Product categories" },
+                { value: "16", label: "Yarn colourways" },
+                { value: "100%", label: "Handmade to order" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-display text-2xl font-bold text-bone-50">{stat.value}</p>
+                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-bone-500">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
+          {/* Hero visual — the live studio preview, not a static photo */}
           <div className="relative z-10">
-            <div className="relative mx-auto max-w-xl">
-              <div className="absolute -left-5 top-12 h-28 w-28 rounded-full bg-white/70 blur-2xl" />
-              <div className="absolute -right-5 bottom-10 h-36 w-36 rounded-full bg-blush-200/70 blur-2xl" />
-              <div className="relative rounded-[2rem] border border-white/80 bg-white/52 p-4 shadow-glow backdrop-blur-xl">
-                <img
-                  src="/images/thyra-hero.png"
-                  alt="Soft handmade Thyra World product mood board with a bag, basket, mug cozy, coasters, pouch, scrunchie, bookmark, and braided cord"
-                  className="aspect-[5/2] w-full rounded-[1.5rem] object-cover sm:aspect-[4/3]"
-                />
-                <div className="absolute bottom-8 left-8 hidden max-w-[17rem] rounded-3xl border border-white/80 bg-white/76 p-5 shadow-soft backdrop-blur-xl sm:block">
-                  <p className="text-sm font-bold uppercase tracking-[0.16em] text-blush-500">
-                    From our hands
-                  </p>
-                  <p className="mt-2 text-lg font-bold leading-6 text-clay-700">
-                    Custom colours, cute details, and thoughtful gifting pieces.
-                  </p>
+            <div className="glass relative mx-auto max-w-lg overflow-hidden p-6">
+              <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 animate-drift rounded-full bg-yarn-coral/30 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-20 -right-14 h-64 w-64 animate-drift-slow rounded-full bg-yarn-violet/25 blur-3xl" />
+
+              <div className="relative flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-bone-500">
+                <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-yarn-sage" />
+                Design Studio · live preview
+              </div>
+
+              <ProductPreview
+                productId="bag"
+                body={getYarn(heroDesign.body)}
+                accent={getYarn(heroDesign.accent)}
+                handle={getYarn(heroDesign.handle)}
+                stitch="single"
+                className="relative mx-auto w-full max-w-sm drop-shadow-2xl"
+              />
+
+              {/* Swatch strip hinting at what the studio can do */}
+              <div className="relative mt-1 flex items-center justify-between gap-3 rounded-2xl border border-white/[0.07] bg-ink-900/60 p-3">
+                <div className="flex gap-1.5">
+                  {["coral", "amber", "sage", "violet", "rose", "cream"].map((c) => (
+                    <span
+                      key={c}
+                      title={getYarn(c).name}
+                      className="h-5 w-5 rounded-full border border-white/20"
+                      style={{ background: getYarn(c).hex }}
+                    />
+                  ))}
                 </div>
+                <Link
+                  to="/studio"
+                  className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-yarn-coral transition hover:gap-2.5"
+                >
+                  Customise
+                  <ArrowRight aria-hidden="true" size={13} />
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="pb-14 pt-6 sm:pb-16 sm:pt-10 lg:pb-20 lg:pt-10">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* ------------------------- CATEGORIES ------------------------- */}
+      <section className="section-padding">
+        <div className="shell">
           <SectionHeader
             eyebrow="Featured Categories"
-            title="Little handmade joys for everyday use, gifting, and cosy corners"
+            title="Little handmade joys for everyday use"
             description="Browse soft, personal categories and enquire directly for colours, availability, and custom ideas."
           />
           <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-            {featuredCategories.map((category) => (
-              <CategoryCard key={category} category={category} />
+            {featuredCategories.map((category, i) => (
+              <CategoryCard key={category} category={category} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-white/50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      {/* --------------------- STUDIO PROMOTION ---------------------- */}
+      <section className="section-padding relative overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 bg-mesh-soft" />
+        <div className="shell relative">
+          <div className="glass relative overflow-hidden p-7 sm:p-10 lg:p-14">
+            <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 animate-drift rounded-full bg-yarn-sage/20 blur-3xl" />
+            <div className="pointer-events-none absolute inset-0 grid-bg opacity-40" />
+
+            <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_0.85fr]">
+              <div>
+                <span className="eyebrow">
+                  <Wand2 aria-hidden="true" size={13} />
+                  Customisation
+                </span>
+                <h2 className="mt-5 font-display text-3xl font-bold leading-[1.1] text-gradient sm:text-4xl lg:text-5xl">
+                  Love it, but in
+                  <br />
+                  <span className="text-gradient-yarn">your colour?</span>
+                </h2>
+                <p className="mt-5 max-w-xl text-base leading-7 text-bone-400">
+                  Any piece in our collection can be remade in a different yarn, size, or
+                  stitch — just tell us what you have in mind. Our Design Studio lets you
+                  preview the change before you ask, across bags, baskets, coasters,
+                  AirPod cases, lip balm holders, and pouches.
+                </p>
+
+                <div className="mt-7 flex flex-wrap gap-2">
+                  {["Bags", "Baskets", "Coasters", "AirPod Cases", "Lip Balm Holders", "Pouches"].map(
+                    (p) => (
+                      <span
+                        key={p}
+                        className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold text-bone-300"
+                      >
+                        {p}
+                      </span>
+                    )
+                  )}
+                </div>
+
+                <Button to="/studio" className="mt-8 px-6 py-3.5">
+                  <Palette aria-hidden="true" size={18} />
+                  Try a colour change
+                  <ArrowRight aria-hidden="true" size={16} />
+                </Button>
+              </div>
+
+              {/* Three colourways of the same basket */}
+              <div className="grid grid-cols-3 gap-3">
+                {[
+                  { body: "violet", accent: "cream", handle: "charcoal" },
+                  { body: "sage", accent: "cream", handle: "camel" },
+                  { body: "amber", accent: "terracotta", handle: "charcoal" },
+                ].map((c, i) => (
+                  <div
+                    key={i}
+                    className="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-2 transition duration-300 hover:-translate-y-1.5 hover:border-white/20"
+                  >
+                    <ProductPreview
+                      productId="basket"
+                      body={getYarn(c.body)}
+                      accent={getYarn(c.accent)}
+                      handle={getYarn(c.handle)}
+                      stitch="granny"
+                      className="w-full"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------------------- WHY ---------------------------- */}
+      <section className="section-padding">
+        <div className="shell">
           <SectionHeader
             eyebrow="Why Thyra World"
-            title="Warm, personal, and made with the kind of care you can feel"
+            title="Made with the kind of care you can feel"
           />
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {whyCards.map((card) => {
               const Icon = card.icon;
               return (
-                <article
-                  key={card.title}
-                  className="rounded-2xl border border-peach-100 bg-white p-5 shadow-soft"
-                >
-                  <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-peach-100 text-blush-500">
-                    <Icon aria-hidden="true" size={21} />
+                <article key={card.title} className="glass glass-hover group relative overflow-hidden p-6">
+                  <span
+                    className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-0 blur-3xl transition duration-500 group-hover:opacity-40"
+                    style={{ background: card.accent }}
+                  />
+                  <span
+                    className="relative mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10"
+                    style={{ background: `${card.accent}1A`, color: card.accent }}
+                  >
+                    <Icon aria-hidden="true" size={22} />
                   </span>
-                  <h3 className="text-lg font-bold text-clay-700">{card.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-clay-500">{card.description}</p>
+                  <h3 className="relative font-display text-lg font-bold text-bone-50">
+                    {card.title}
+                  </h3>
+                  <p className="relative mt-3 text-sm leading-6 text-bone-400">
+                    {card.description}
+                  </p>
                 </article>
               );
             })}
@@ -167,61 +277,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-padding">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl border border-peach-100 bg-peach-100 p-6 shadow-soft sm:p-8 lg:p-10">
-            <div className="absolute -right-16 -top-16 h-44 w-44 rounded-full bg-blush-300/30 blur-3xl" />
-            <div className="absolute -bottom-20 left-12 h-48 w-48 rounded-full bg-white/60 blur-3xl" />
-            <div className="pointer-events-none absolute left-6 top-8 hidden h-24 w-44 rounded-[50%] border border-blush-200/70 sm:block" />
-            <div className="relative">
-              <SectionHeader
-                eyebrow="Instagram"
-                title="See the Story Behind the Creations"
-                description="Follow Thyra World for handmade product updates, reels, custom creations, and behind-the-scenes moments. You can also follow Shubham Salehria to connect with the founder’s personal journey, writing, creativity, and everyday inspiration."
-              />
-              <div className="grid gap-5 lg:grid-cols-2">
-                {instagramProfiles.map((profile) => {
-                  const Icon = profile.icon;
-                  return (
-                    <article
-                      key={profile.handle}
-                      className="group relative overflow-hidden rounded-3xl border border-white/80 bg-white/90 p-6 shadow-soft backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:shadow-glow sm:p-7"
-                    >
-                      <div className="absolute right-5 top-5 h-14 w-14 rounded-full bg-gradient-to-br from-blush-300 via-peach-300 to-clay-200 opacity-35 transition group-hover:scale-110" />
-                      <div className="relative">
-                        <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-blush-400 to-peach-300 text-white shadow-sm">
-                          <Icon aria-hidden="true" size={22} />
-                        </span>
-                        <p className="text-xs font-bold uppercase tracking-[0.16em] text-blush-400">
-                          {profile.handle}
-                        </p>
-                        <h3 className="mt-2 font-display text-3xl font-bold text-clay-700">
-                          {profile.title}
-                        </h3>
-                        <p className="mt-3 text-sm leading-6 text-clay-500">
-                          {profile.description}
-                        </p>
-                        <Button
-                          href={profile.href}
-                          target="_blank"
-                          rel="noreferrer"
-                          variant="secondary"
-                          className="mt-6"
-                          aria-label={`Visit ${profile.handle} on Instagram`}
-                        >
-                          <Instagram aria-hidden="true" size={18} />
-                          Visit {profile.handle}
-                        </Button>
-                      </div>
-                    </article>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <JoinSection />
+      <InstagramSection />
       <ContactCTA />
     </>
   );

@@ -1,6 +1,6 @@
-import { MessageCircle, Palette } from "lucide-react";
+import { ArrowRight, MessageCircle, Palette } from "lucide-react";
 import Button from "./Button.jsx";
-import { createWhatsAppLink } from "../data/products.js";
+import { createWhatsAppLink } from "../data/site.js";
 
 export default function ContactCTA({
   title = "Found something you love?",
@@ -8,33 +8,34 @@ export default function ContactCTA({
 }) {
   return (
     <section className="section-padding">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-blush-400 p-7 text-white shadow-glow sm:p-10 lg:p-12">
-          <div className="absolute -right-16 -top-20 h-56 w-56 rounded-full bg-white/18 blur-2xl" />
-          <div className="absolute -bottom-20 left-16 h-56 w-56 rounded-full bg-peach-200/28 blur-2xl" />
+      <div className="shell">
+        <div className="glass relative overflow-hidden p-7 sm:p-10 lg:p-14">
+          <div className="pointer-events-none absolute -right-24 -top-28 h-72 w-72 animate-drift rounded-full bg-yarn-coral/25 blur-3xl" />
+          <div className="pointer-events-none absolute -bottom-28 left-10 h-72 w-72 animate-drift-slow rounded-full bg-yarn-violet/20 blur-3xl" />
+          <div className="pointer-events-none absolute inset-0 grid-bg opacity-50" />
+
           <div className="relative grid gap-8 lg:grid-cols-[1fr_auto] lg:items-center">
             <div>
-              <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-white/18 backdrop-blur-md">
-                <Palette aria-hidden="true" size={24} />
+              <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-white/12 bg-white/[0.06] text-yarn-coral backdrop-blur">
+                <Palette aria-hidden="true" size={23} />
               </span>
-              <h2 className="font-display text-3xl font-bold leading-tight sm:text-4xl">
+              <h2 className="font-display text-3xl font-bold leading-[1.12] text-gradient sm:text-4xl lg:text-5xl">
                 {title}
               </h2>
-              <p className="mt-4 max-w-2xl text-base leading-7 text-white/88 sm:text-lg">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-bone-400 sm:text-lg">
                 {description}
               </p>
             </div>
-            <Button
-              href={createWhatsAppLink()}
-              target="_blank"
-              rel="noreferrer"
-              variant="secondary"
-              className="bg-white text-blush-500 hover:bg-peach-50"
-              aria-label="Enquire with Thyra World on WhatsApp"
-            >
-              <MessageCircle aria-hidden="true" size={18} />
-              Enquire on WhatsApp
-            </Button>
+            <div className="flex flex-col gap-3">
+              <Button href={createWhatsAppLink()} target="_blank" rel="noreferrer">
+                <MessageCircle aria-hidden="true" size={18} />
+                Enquire on WhatsApp
+              </Button>
+              <Button to="/contact" variant="secondary">
+                Send a message
+                <ArrowRight aria-hidden="true" size={16} />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
