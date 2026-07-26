@@ -27,7 +27,7 @@ export const productCategories = [
   "Pouches",
 ];
 
-export const featuredCategories = [...productCategories, "E-books"];
+export const featuredCategories = productCategories;
 
 /**
  * `photo` is the real product photograph and `image` is the illustrated
@@ -209,32 +209,3 @@ export const products = [
   },
 ];
 
-export const ebooks = [
-  {
-    id: "coming-soon",
-    title: "Coming Soon",
-    author: "Shubham Salehria",
-    description:
-      "A heartfelt book by Shubham Salehria will be available here soon.",
-    image: "/images/product-ebooks.svg",
-    instagramUrl: "",
-  },
-  {
-    id: "stories-in-progress",
-    title: "Stories in Progress",
-    author: "Shubham Salehria",
-    description:
-      "A space for Shubham’s upcoming writing, reflections, and creative storytelling.",
-    image: "/images/product-ebooks.svg",
-    instagramUrl: "",
-  },
-  {
-    id: "untitled-reflections",
-    title: "Untitled Reflections",
-    author: "Shubham Salehria",
-    description:
-      "Personal, emotional, and inspiring writing from the founder of Thyra World.",
-    image: "/images/product-ebooks.svg",
-    instagramUrl: "",
-  },
-];

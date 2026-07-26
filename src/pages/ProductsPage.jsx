@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Palette, SlidersHorizontal, Sparkles, X } from "lucide-react";
+import { MessageCircle, SlidersHorizontal, X } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import Button from "../components/Button.jsx";
 import ProductCard from "../components/ProductCard.jsx";
@@ -10,13 +10,10 @@ import { createWhatsAppLink } from "../data/site.js";
 
 export default function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const initialCategory = searchParams.get("category") || "All";
-  const [category, setCategory] = useState(initialCategory);
+  const [category, setCategory] = useState(searchParams.get("category") || "All");
   const [searchTerm, setSearchTerm] = useState("");
-  const [customOnly, setCustomOnly] = useState(false);
-  const [handmadeOnly, setHandmadeOnly] = useState(false);
   const [sortBy, setSortBy] = useState("featured");
-  const [filtersOpen, setFiltersOpen] = useState(false); // mobile drawer
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const handleCategoryChange = (value) => {
     setCategory(value);
@@ -27,41 +24,30 @@ export default function ProductsPage() {
   const clearFilters = () => {
     setCategory("All");
     setSearchTerm("");
-    setCustomOnly(false);
-    setHandmadeOnly(false);
     setSortBy("featured");
     setSearchParams({});
   };
 
-  const hasActiveFilters =
-    category !== "All" || searchTerm !== "" || customOnly || handmadeOnly;
+  const hasActiveFilters = category !== "All" || searchTerm !== "";
 
-  // Counts ignore the category filter so the sidebar always shows the full picture.
+  // Counts ignore the category filter so the sidebar shows the full picture.
   const counts = useMemo(() => {
-    const base = products.filter((p) => {
-      const s = searchTerm.trim().toLowerCase();
-      return (
-        (s.length === 0 || p.name.toLowerCase().includes(s)) &&
-        (!customOnly || p.isCustomisable) &&
-        (!handmadeOnly || p.isHandmade)
-      );
-    });
+    const s = searchTerm.trim().toLowerCase();
+    const base = products.filter(
+      (p) => s.length === 0 || p.name.toLowerCase().includes(s)
+    );
     const out = { All: base.length };
     for (const p of base) out[p.category] = (out[p.category] || 0) + 1;
     return out;
-  }, [searchTerm, customOnly, handmadeOnly]);
+  }, [searchTerm]);
 
   const filteredProducts = useMemo(() => {
-    const normalizedSearch = searchTerm.trim().toLowerCase();
-    const list = products.filter((product) => {
-      const matchesCategory = category === "All" || product.category === category;
-      const matchesSearch =
-        normalizedSearch.length === 0 ||
-        product.name.toLowerCase().includes(normalizedSearch);
-      const matchesCustom = !customOnly || product.isCustomisable;
-      const matchesHandmade = !handmadeOnly || product.isHandmade;
-      return matchesCategory && matchesSearch && matchesCustom && matchesHandmade;
-    });
+    const s = searchTerm.trim().toLowerCase();
+    const list = products.filter(
+      (p) =>
+        (category === "All" || p.category === category) &&
+        (s.length === 0 || p.name.toLowerCase().includes(s))
+    );
 
     const featuredOrder = new Map(products.map((p, i) => [p.id, i]));
 
@@ -72,20 +58,16 @@ export default function ProductsPage() {
       }
       return featuredOrder.get(a.id) - featuredOrder.get(b.id);
     });
-  }, [category, customOnly, handmadeOnly, searchTerm, sortBy]);
+  }, [category, searchTerm, sortBy]);
 
   const filterProps = {
     category,
     searchTerm,
-    customOnly,
-    handmadeOnly,
     sortBy,
     counts,
     hasActiveFilters,
     onCategoryChange: handleCategoryChange,
     onSearchChange: setSearchTerm,
-    onCustomOnlyChange: setCustomOnly,
-    onHandmadeOnlyChange: setHandmadeOnly,
     onSortChange: setSortBy,
     onClear: clearFilters,
   };
@@ -98,47 +80,33 @@ export default function ProductsPage() {
         <div className="shell">
           <SectionHeader
             eyebrow="Products"
-            icon={Sparkles}
             title="Our handmade collection"
-            description="Every piece here is crocheted by hand. Found one you love but want it in a different colour or size? We customise any of them."
+            description="Every piece here is crocheted by hand. Want one in a different colour or size? Just ask."
           />
 
-          {/* Mobile filter toggle */}
           <button
             type="button"
             onClick={() => setFiltersOpen((v) => !v)}
-            className="mb-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-bone-200 transition hover:border-white/25 lg:hidden"
+            className="mb-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink-200 bg-white px-5 py-3 text-sm font-bold text-ink-700 shadow-soft transition hover:border-candy-pink lg:hidden"
             aria-expanded={filtersOpen}
           >
-            {filtersOpen ? (
-              <X aria-hidden="true" size={16} />
-            ) : (
-              <SlidersHorizontal aria-hidden="true" size={16} />
-            )}
+            {filtersOpen ? <X aria-hidden="true" size={16} /> : <SlidersHorizontal aria-hidden="true" size={16} />}
             {filtersOpen ? "Hide filters" : "Filters"}
             {hasActiveFilters && !filtersOpen && (
-              <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-yarn-coral" />
+              <span className="ml-1 inline-block h-1.5 w-1.5 rounded-full bg-candy-pink" />
             )}
           </button>
 
-          <div className="grid gap-6 lg:grid-cols-[264px_1fr]">
-            {/* Sidebar — always rendered on desktop, toggled on mobile */}
+          <div className="grid gap-6 lg:grid-cols-[248px_1fr]">
             <div className={filtersOpen ? "block" : "hidden lg:block"}>
               <ProductFilters {...filterProps} />
             </div>
 
             <div>
-              <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <p className="font-mono text-xs uppercase tracking-[0.14em] text-bone-500">
-                  {filteredProducts.length} product
-                  {filteredProducts.length === 1 ? "" : "s"}
-                  {category !== "All" && ` in ${category}`}
-                </p>
-                <Button to="/studio" variant="secondary" className="w-full sm:w-auto">
-                  <Palette aria-hidden="true" size={17} />
-                  Customise a piece
-                </Button>
-              </div>
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.14em] text-ink-400">
+                {filteredProducts.length} product{filteredProducts.length === 1 ? "" : "s"}
+                {category !== "All" && ` in ${category}`}
+              </p>
 
               {filteredProducts.length > 0 ? (
                 <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -147,13 +115,13 @@ export default function ProductsPage() {
                   ))}
                 </div>
               ) : (
-                <div className="glass p-10 text-center">
-                  <h2 className="font-display text-2xl font-bold text-bone-50">
+                <div className="card p-10 text-center">
+                  <h2 className="font-display text-2xl font-bold text-ink-900">
                     No matching products yet
                   </h2>
-                  <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-bone-400">
-                    Try another category, clear your filters, or message us — we can
-                    usually make what you have in mind.
+                  <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-ink-500">
+                    Try another category, or message us — we can usually make what you
+                    have in mind.
                   </p>
                   <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
                     <Button onClick={clearFilters}>Clear filters</Button>
@@ -163,6 +131,7 @@ export default function ProductsPage() {
                       rel="noreferrer"
                       variant="secondary"
                     >
+                      <MessageCircle aria-hidden="true" size={16} />
                       Ask on WhatsApp
                     </Button>
                   </div>

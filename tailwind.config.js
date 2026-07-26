@@ -4,90 +4,69 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Canvas + surfaces — the "midnight" half of Midnight Yarn
+        // Light canvas + surfaces
+        canvas: {
+          DEFAULT: "#FEFCFF",
+          soft: "#FBF7FD",
+          warm: "#FFF9F5",
+        },
         ink: {
-          950: "#07080C",
-          900: "#0B0D12",
-          800: "#0F131A",
-          700: "#151922",
-          600: "#1C2029",
-          500: "#252A35",
-          400: "#3A404E",
-          300: "#525A6B",
+          900: "#1B1B2F",
+          700: "#3A3A52",
+          500: "#5A5A72",
+          400: "#8181A0",
+          300: "#A9A9C0",
+          200: "#DCD8E6",
+          100: "#EFEBF5",
         },
-        // Type + hairlines
-        bone: {
-          50: "#F7F5F1",
-          100: "#F4F1EC",
-          200: "#DCD7CE",
-          300: "#A8AEBD",
-          400: "#8B93A5",
-          500: "#6B7385",
-        },
-        // The "yarn" half — every accent is a real yarn colourway
-        yarn: {
-          coral: "#FF6B4A",
-          ember: "#FF4D6D",
-          amber: "#FFB627",
-          sage: "#4ECDC4",
-          violet: "#A78BFA",
-          rose: "#FF8FA3",
-          mint: "#6EE7B7",
-          sky: "#60A5FA",
+        // Candy-bright accents
+        candy: {
+          pink: "#FF4D8D",
+          violet: "#7C3AED",
+          mint: "#06D6A0",
+          yellow: "#FFD60A",
+          coral: "#FF7A5C",
+          sky: "#4CC9F0",
         },
       },
       boxShadow: {
-        glass: "0 8px 32px rgba(0, 0, 0, 0.42)",
-        lift: "0 24px 64px rgba(0, 0, 0, 0.55)",
-        "glow-coral": "0 0 0 1px rgba(255,107,74,0.28), 0 18px 48px rgba(255,107,74,0.24)",
-        "glow-sage": "0 0 0 1px rgba(78,205,196,0.28), 0 18px 48px rgba(78,205,196,0.20)",
-        "glow-violet": "0 0 0 1px rgba(167,139,250,0.28), 0 18px 48px rgba(167,139,250,0.22)",
+        soft: "0 4px 20px rgba(27, 27, 47, 0.06)",
+        card: "0 8px 30px rgba(27, 27, 47, 0.08)",
+        lift: "0 18px 44px rgba(27, 27, 47, 0.13)",
+        pink: "0 10px 30px rgba(255, 77, 141, 0.32)",
+        violet: "0 10px 30px rgba(124, 58, 237, 0.28)",
+        mint: "0 10px 30px rgba(6, 214, 160, 0.26)",
       },
       fontFamily: {
-        display: ['"Space Grotesk"', "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Fredoka", "ui-rounded", "system-ui", "sans-serif"],
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
       backgroundImage: {
         "mesh-hero":
-          "radial-gradient(60rem 40rem at 12% -8%, rgba(255,107,74,0.22), transparent 62%), radial-gradient(52rem 36rem at 88% 8%, rgba(167,139,250,0.20), transparent 60%), radial-gradient(44rem 34rem at 50% 108%, rgba(78,205,196,0.16), transparent 62%)",
+          "radial-gradient(48rem 34rem at 8% -6%, rgba(255,77,141,0.16), transparent 60%), radial-gradient(42rem 30rem at 92% 4%, rgba(124,58,237,0.14), transparent 58%), radial-gradient(38rem 28rem at 50% 104%, rgba(6,214,160,0.13), transparent 60%)",
         "mesh-soft":
-          "radial-gradient(38rem 26rem at 88% 0%, rgba(255,182,39,0.12), transparent 60%), radial-gradient(34rem 24rem at 4% 100%, rgba(167,139,250,0.12), transparent 60%)",
-        "grid-faint":
-          "linear-gradient(rgba(255,255,255,0.032) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.032) 1px, transparent 1px)",
-      },
-      backgroundSize: {
-        grid: "56px 56px",
+          "radial-gradient(32rem 22rem at 90% 0%, rgba(255,214,10,0.14), transparent 60%), radial-gradient(30rem 22rem at 4% 100%, rgba(76,201,240,0.13), transparent 60%)",
+        "candy-gradient": "linear-gradient(120deg, #FF4D8D 0%, #7C3AED 100%)",
       },
       keyframes: {
-        drift: {
+        blob: {
           "0%, 100%": { transform: "translate3d(0,0,0) scale(1)" },
-          "50%": { transform: "translate3d(0,-22px,0) scale(1.06)" },
-        },
-        "yarn-draw": {
-          "0%": { strokeDashoffset: "1400" },
-          "100%": { strokeDashoffset: "0" },
-        },
-        shimmer: {
-          "0%": { backgroundPosition: "-200% 0" },
-          "100%": { backgroundPosition: "200% 0" },
+          "50%": { transform: "translate3d(0,-24px,0) scale(1.08)" },
         },
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(14px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        spinslow: {
-          "0%": { transform: "rotate(0deg)" },
-          "100%": { transform: "rotate(360deg)" },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-14px)" },
         },
       },
       animation: {
-        drift: "drift 13s ease-in-out infinite",
-        "drift-slow": "drift 19s ease-in-out infinite",
-        "yarn-draw": "yarn-draw 3.2s ease-out forwards",
-        shimmer: "shimmer 2.4s linear infinite",
+        blob: "blob 14s ease-in-out infinite",
+        "blob-slow": "blob 20s ease-in-out infinite",
         "fade-up": "fade-up 0.6s ease-out both",
-        spinslow: "spinslow 26s linear infinite",
+        float: "float 6s ease-in-out infinite",
       },
     },
   },

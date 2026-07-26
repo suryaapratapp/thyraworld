@@ -18,22 +18,22 @@ const LAST_UPDATED = "25 July 2026";
 function Section({ title, children }) {
   return (
     <section className="mt-8 first:mt-0">
-      <h2 className="font-display text-xl font-bold text-bone-50 sm:text-2xl">{title}</h2>
-      <div className="mt-3 space-y-3 text-sm leading-7 text-bone-300">{children}</div>
+      <h2 className="font-display text-xl font-bold text-ink-900 sm:text-2xl">{title}</h2>
+      <div className="mt-3 space-y-3 text-sm leading-7 text-ink-500">{children}</div>
     </section>
   );
 }
 
 function Callout({ tone = "amber", icon: Icon = AlertTriangle, children }) {
   const tones = {
-    amber: "border-yarn-amber/25 bg-yarn-amber/[0.07] text-yarn-amber",
-    coral: "border-yarn-coral/25 bg-yarn-coral/[0.07] text-yarn-coral",
-    sage: "border-yarn-sage/25 bg-yarn-sage/[0.07] text-yarn-sage",
+    amber: "border-candy-yellow/25 bg-candy-yellow/[0.07] text-candy-yellow",
+    coral: "border-candy-pink/25 bg-candy-pink/[0.07] text-candy-pink",
+    sage: "border-candy-mint/25 bg-candy-mint/[0.07] text-candy-mint",
   };
   return (
     <div className={`mt-5 flex items-start gap-3 rounded-2xl border p-4 ${tones[tone]}`}>
       <Icon aria-hidden="true" size={18} className="mt-0.5 shrink-0" />
-      <div className="text-sm leading-6 text-bone-200">{children}</div>
+      <div className="text-sm leading-6 text-ink-700">{children}</div>
     </div>
   );
 }
@@ -97,7 +97,7 @@ export function PrivacyPolicyPage() {
         <p>
           You can ask us at any time to tell you what we hold about you, correct it, or
           delete it. Email{" "}
-          <a href={`mailto:${contactEmail}`} className="text-yarn-coral hover:underline">
+          <a href={`mailto:${contactEmail}`} className="text-candy-pink hover:underline">
             {contactEmail}
           </a>{" "}
           or message us on WhatsApp and we will sort it out.
@@ -141,12 +141,12 @@ export function RefundPolicyPage() {
 
       <Section title="Cancelling an order">
         <p>
-          <strong className="text-bone-50">Within 24 hours of order confirmation:</strong>{" "}
+          <strong className="text-ink-900">Within 24 hours of order confirmation:</strong>{" "}
           you can cancel for any reason and receive a full refund. We will not have cut
           yarn yet, so there is nothing lost.
         </p>
         <p>
-          <strong className="text-bone-50">After 24 hours of order confirmation:</strong>{" "}
+          <strong className="text-ink-900">After 24 hours of order confirmation:</strong>{" "}
           cancellation is still possible, but <strong>50% of the payment will be
           deducted</strong> and the remaining 50% refunded. By that point the yarn has
           been bought and the work has begun, and a half-finished custom piece in your
@@ -173,8 +173,7 @@ export function RefundPolicyPage() {
           Because every piece is crocheted by hand, small variations in colour, texture,
           and size are normal and are not defects — they are the reason handmade looks
           different from factory-made. Screens also show colour differently from real
-          yarn, and the colour previews in our Design Studio are approximations. We
-          confirm the actual shade with you before we start.
+          yarn, so we confirm the actual shade with you before we start.
         </p>
         <p>
           For that reason we cannot accept returns simply because you changed your mind
@@ -212,17 +211,17 @@ function PolicyShell({ eyebrow, icon, title, description, children }) {
           <SectionHeader eyebrow={eyebrow} icon={icon} title={title} description={description} />
 
           <div className="mx-auto max-w-3xl">
-            <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.18em] text-bone-500">
+            <p className="mb-6 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400">
               Last updated: {LAST_UPDATED}
             </p>
 
-            <div className="glass p-6 sm:p-9">{children}</div>
+            <div className="card p-6 sm:p-9">{children}</div>
 
-            <div className="glass mt-6 p-6 sm:p-8">
-              <h2 className="font-display text-xl font-bold text-bone-50">
+            <div className="card mt-6 p-6 sm:p-8">
+              <h2 className="font-display text-xl font-bold text-ink-900">
                 Questions about any of this?
               </h2>
-              <p className="mt-2 text-sm leading-6 text-bone-400">
+              <p className="mt-2 text-sm leading-6 text-ink-500">
                 Ask us directly — a real person reads every message.
               </p>
               <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
@@ -240,13 +239,13 @@ function PolicyShell({ eyebrow, icon, title, description, children }) {
               </div>
             </div>
 
-            <p className="mt-6 text-center text-xs text-bone-500">
+            <p className="mt-6 text-center text-xs text-ink-400">
               See also:{" "}
-              <Link to="/privacy" className="text-bone-300 hover:text-yarn-coral">
+              <Link to="/privacy" className="text-ink-500 hover:text-candy-pink">
                 Privacy Policy
               </Link>{" "}
               ·{" "}
-              <Link to="/refund-policy" className="text-bone-300 hover:text-yarn-coral">
+              <Link to="/refund-policy" className="text-ink-500 hover:text-candy-pink">
                 Refund &amp; Cancellation Policy
               </Link>
             </p>

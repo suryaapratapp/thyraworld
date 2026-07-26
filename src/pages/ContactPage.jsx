@@ -82,7 +82,7 @@ export default function ContactPage() {
   return (
     <div className="relative">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-mesh-hero" />
-      <div className="pointer-events-none absolute inset-0 -z-10 grid-bg opacity-50" />
+      <div className="pointer-events-none absolute inset-0 -z-10  opacity-50" />
 
       <section className="section-padding">
         <div className="shell">
@@ -102,22 +102,22 @@ export default function ContactPage() {
                   key={c.label}
                   href={c.href}
                   {...(c.external ? { target: "_blank", rel: "noreferrer" } : {})}
-                  className="glass glass-hover group flex items-center gap-4 p-4"
+                  className="card card-hover group flex items-center gap-4 p-4"
                 >
                   <span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-white/10 transition group-hover:scale-110"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-ink-200 transition group-hover:scale-110"
                     style={{ background: `${c.accent}1A`, color: c.accent }}
                   >
                     <Icon aria-hidden="true" size={20} />
                   </span>
                   <span className="min-w-0">
-                    <span className="block font-mono text-[9px] uppercase tracking-[0.18em] text-bone-500">
+                    <span className="block font-mono text-[9px] uppercase tracking-[0.18em] text-ink-400">
                       {c.label}
                     </span>
-                    <span className="block truncate text-sm font-bold text-bone-100">
+                    <span className="block truncate text-sm font-bold text-ink-900">
                       {c.value}
                     </span>
-                    <span className="block text-[11px] text-bone-500">{c.note}</span>
+                    <span className="block text-[11px] text-ink-400">{c.note}</span>
                   </span>
                 </a>
               );
@@ -131,17 +131,17 @@ export default function ContactPage() {
               {helpCards.map((card) => {
                 const Icon = card.icon;
                 return (
-                  <article key={card.title} className="glass glass-hover p-5">
+                  <article key={card.title} className="card card-hover p-5">
                     <span
-                      className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10"
+                      className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl border border-ink-200"
                       style={{ background: `${card.accent}1A`, color: card.accent }}
                     >
                       <Icon aria-hidden="true" size={20} />
                     </span>
-                    <h3 className="font-display text-lg font-bold text-bone-50">
+                    <h3 className="font-display text-lg font-bold text-ink-900">
                       {card.title}
                     </h3>
-                    <p className="mt-2 text-sm leading-6 text-bone-400">
+                    <p className="mt-2 text-sm leading-6 text-ink-500">
                       {card.description}
                     </p>
                   </article>

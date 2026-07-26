@@ -39,8 +39,8 @@ const learnModeOptions = [
 
 export default function ContactForm({ defaultType }) {
   const location = useLocation();
-  // The Design Studio and the Join Us buttons both deep-link in with an intent
-  // (and sometimes a pre-written message) attached to router state.
+  // The Join Us buttons deep-link in with an intent (and sometimes a
+  // pre-written message) attached to router state.
   const incoming = location.state || {};
 
   const [type, setType] = useState(
@@ -126,19 +126,19 @@ export default function ContactForm({ defaultType }) {
 
   if (status === "success") {
     return (
-      <div className="glass p-8 text-center sm:p-12" id="contact-form">
-        <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-yarn-sage/15 text-yarn-sage">
+      <div className="card p-8 text-center sm:p-12" id="contact-form">
+        <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-candy-mint/15 text-candy-mint">
           <CheckCircle2 aria-hidden="true" size={30} />
         </span>
-        <h3 className="font-display text-3xl font-bold text-bone-50">Message sent</h3>
-        <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-bone-400">
+        <h3 className="font-display text-3xl font-bold text-ink-900">Message sent</h3>
+        <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-ink-500">
           Thank you for reaching out. We read every message ourselves and usually
           reply within a day or two.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 rounded-full border border-white/15 bg-white/[0.05] px-5 py-2.5 text-sm font-semibold text-bone-200 transition hover:border-white/30 hover:text-bone-50"
+          className="mt-6 rounded-full border border-ink-200 bg-white px-5 py-2.5 text-sm font-semibold text-ink-700 transition hover:border-ink-200 hover:text-ink-900"
         >
           Send another message
         </button>
@@ -149,7 +149,7 @@ export default function ContactForm({ defaultType }) {
   const activeType = enquiryTypes.find((t) => t.value === type);
 
   return (
-    <form onSubmit={handleSubmit} className="glass p-5 sm:p-8" id="contact-form">
+    <form onSubmit={handleSubmit} className="card p-5 sm:p-8" id="contact-form">
       {/* Intent picker */}
       <fieldset className="mb-6">
         <legend className="field-label">I&apos;m reaching out about</legend>
@@ -164,12 +164,12 @@ export default function ContactForm({ defaultType }) {
                 aria-pressed={active}
                 className={`rounded-2xl border px-4 py-3 text-left transition ${
                   active
-                    ? "border-yarn-coral/60 bg-yarn-coral/10 shadow-glow-coral"
-                    : "border-white/[0.08] bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.06]"
+                    ? "border-candy-pink/60 bg-candy-pink/10 shadow-pink"
+                    : "border-ink-100 bg-white hover:border-ink-200 hover:bg-white"
                 }`}
               >
-                <span className="block text-sm font-bold text-bone-50">{t.label}</span>
-                <span className="mt-0.5 block text-[11px] leading-4 text-bone-500">
+                <span className="block text-sm font-bold text-ink-900">{t.label}</span>
+                <span className="mt-0.5 block text-[11px] leading-4 text-ink-400">
                   {t.blurb}
                 </span>
               </button>
@@ -239,9 +239,9 @@ export default function ContactForm({ defaultType }) {
 
       {/* ---- Freelance-only fields ---- */}
       {isFreelance && (
-        <div className="mt-4 grid gap-4 rounded-2xl border border-yarn-violet/20 bg-yarn-violet/[0.05] p-4 sm:grid-cols-2">
+        <div className="mt-4 grid gap-4 rounded-2xl border border-candy-violet/20 bg-candy-violet/[0.05] p-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-yarn-violet">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-candy-violet">
               About your crochet work
             </p>
           </div>
@@ -292,9 +292,9 @@ export default function ContactForm({ defaultType }) {
 
       {/* ---- Learning-only fields ---- */}
       {isLearning && (
-        <div className="mt-4 grid gap-4 rounded-2xl border border-yarn-sage/20 bg-yarn-sage/[0.05] p-4 sm:grid-cols-2">
+        <div className="mt-4 grid gap-4 rounded-2xl border border-candy-mint/20 bg-candy-mint/[0.05] p-4 sm:grid-cols-2">
           <div className="sm:col-span-2">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-yarn-sage">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-candy-mint">
               About your learning
             </p>
           </div>
@@ -334,7 +334,7 @@ export default function ContactForm({ defaultType }) {
               ))}
             </select>
           </div>
-          <p className="text-[11px] leading-5 text-bone-500 sm:col-span-2">
+          <p className="text-[11px] leading-5 text-ink-400 sm:col-span-2">
             We start sessions once enough people have joined the waitlist — we&apos;ll
             email you the moment there&apos;s a group in your area or timezone.
           </p>
@@ -368,17 +368,17 @@ export default function ContactForm({ defaultType }) {
       {status === "error" && (
         <div
           role="alert"
-          className="mt-4 flex items-start gap-3 rounded-2xl border border-yarn-ember/30 bg-yarn-ember/10 p-4"
+          className="mt-4 flex items-start gap-3 rounded-2xl border border-candy-pink/30 bg-candy-pink/10 p-4"
         >
-          <AlertCircle aria-hidden="true" size={18} className="mt-0.5 shrink-0 text-yarn-ember" />
-          <p className="text-sm leading-6 text-bone-200">{errorMsg}</p>
+          <AlertCircle aria-hidden="true" size={18} className="mt-0.5 shrink-0 text-candy-pink" />
+          <p className="text-sm leading-6 text-ink-700">{errorMsg}</p>
         </div>
       )}
 
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-yarn-coral to-yarn-ember px-6 py-3.5 text-sm font-bold text-white shadow-glow-coral transition duration-300 hover:-translate-y-0.5 hover:shadow-lift disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
+        className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-candy-pink to-candy-pink px-6 py-3.5 text-sm font-bold text-white shadow-pink transition duration-300 hover:-translate-y-0.5 hover:shadow-lift disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
       >
         {status === "sending" ? (
           <>
@@ -393,7 +393,7 @@ export default function ContactForm({ defaultType }) {
         )}
       </button>
 
-      <p className="mt-3 text-center text-[11px] leading-5 text-bone-500">
+      <p className="mt-3 text-center text-[11px] leading-5 text-ink-400">
         We only use your details to reply to you. Nothing is shared with anyone else.
       </p>
     </form>

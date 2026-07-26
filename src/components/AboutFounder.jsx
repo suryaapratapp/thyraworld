@@ -1,32 +1,34 @@
 import { Quote } from "lucide-react";
-import ShubhamCharacter from "./ShubhamCharacter.jsx";
 
 export default function AboutFounder() {
   return (
-    <section className="section-padding relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 bg-mesh-soft" />
+    <section className="section-padding">
+      <div className="shell grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div>
+          <div className="card sticky top-24 relative overflow-hidden p-6 text-center">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 animate-blob rounded-full bg-candy-pink/15 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-16 -left-12 h-48 w-48 animate-blob-slow rounded-full bg-candy-mint/15 blur-3xl" />
 
-      <div className="shell relative grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
-        <div className="relative">
-          <div className="glass sticky top-24 overflow-hidden p-7">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-52 w-52 animate-drift rounded-full bg-yarn-ember/25 blur-3xl" />
-            <div className="relative">
-              <ShubhamCharacter className="mx-auto -mt-2 mb-2 w-full max-w-[19rem]" />
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-yarn-coral">
-                Founder Story
-              </p>
-              <h2 className="mt-4 font-display text-4xl font-bold leading-[1.08] text-gradient sm:text-5xl">
-                Meet Shubham Salehria
-              </h2>
-              <p className="mt-5 text-base leading-7 text-bone-400">
-                Yarn in one hand, phone in the other, laptop open, orders going out —
-                turning colour, patience, and lived experience into handmade joy.
-              </p>
-            </div>
+            <img
+              src="/images/shubham-character.png"
+              alt="Illustration of Shubham Salehria carrying a handmade crochet bag, a notebook, yarn, and a crochet hook"
+              className="relative mx-auto w-full max-w-[17rem] animate-float"
+              loading="lazy"
+            />
+
+            <p className="relative mt-2 text-[10px] font-bold uppercase tracking-[0.18em] text-candy-pink">
+              Founder Story
+            </p>
+            <h2 className="relative mt-3 font-display text-3xl font-bold leading-[1.1] text-ink-900 sm:text-4xl">
+              Meet Shubham Salehria
+            </h2>
+            <p className="relative mt-4 text-sm leading-7 text-ink-500">
+              Turning colour, patience, and lived experience into handmade joy.
+            </p>
           </div>
         </div>
 
-        <div className="glass p-6 sm:p-9">
+        <div className="card p-6 sm:p-9">
           <div className="prose-thyra">
             <p>Meet Shubham Salehria, the founder of Thyra World.</p>
             <p>
@@ -82,9 +84,9 @@ export default function AboutFounder() {
             </p>
           </div>
 
-          <blockquote className="relative mt-9 overflow-hidden rounded-3xl border border-yarn-coral/20 bg-yarn-coral/[0.06] p-6">
-            <Quote aria-hidden="true" className="mb-3 text-yarn-coral" size={22} />
-            <p className="font-display text-lg font-bold leading-8 text-bone-100">
+          <blockquote className="mt-8 rounded-3xl border border-candy-pink/20 bg-candy-pink/[0.06] p-6">
+            <Quote aria-hidden="true" className="mb-3 text-candy-pink" size={22} />
+            <p className="font-display text-lg font-bold leading-8 text-ink-900">
               “Thyra World is for everyone who believes that beautiful things can come
               from brave stories.”
             </p>

@@ -21,12 +21,12 @@ export default function SectionHeader({
         </span>
       )}
       {title && (
-        <h2 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-[1.12] text-gradient sm:text-4xl lg:text-5xl">
+        <h2 className="mt-5 max-w-3xl font-display text-3xl font-bold leading-[1.12] text-ink-900 sm:text-4xl lg:text-[2.75rem]">
           {title}
         </h2>
       )}
       {description && (
-        <p className="mt-4 max-w-2xl text-base leading-7 text-bone-400 sm:text-lg sm:leading-8">
+        <p className="mt-4 max-w-2xl text-base leading-7 text-ink-500 sm:text-lg">
           {description}
         </p>
       )}

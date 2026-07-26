@@ -29,7 +29,7 @@ export const enquiryTypes = [
   {
     value: "Custom order",
     label: "Custom order",
-    blurb: "Share a custom idea, or send a design from the Design Studio.",
+    blurb: "Share a custom idea, or a change to one of our designs.",
     cta: "Send custom order",
   },
   {

@@ -1,4 +1,4 @@
-import { ArrowUpRight, Images, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowUpRight, Images, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import Button from "./Button.jsx";
 import { createWhatsAppLink } from "../data/site.js";
@@ -9,8 +9,6 @@ export default function ProductCard({ product }) {
   const hasPhotos = product.photos?.length > 0;
   const src = hasPhotos ? product.photos[0].card : product.photo || product.image;
 
-  // `colours` is the richer shape on photographed bags; `colourways` is the
-  // plain yarn-id list on the older illustrated products.
   const swatches = hasPhotos
     ? product.colours.map((c) => ({ label: c.name, hex: getYarn(c.yarn).hex }))
     : (product.colourways || []).map((c) => ({
@@ -24,70 +22,56 @@ export default function ProductCard({ product }) {
     : {};
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl transition duration-300 hover:-translate-y-1.5 hover:border-white/20 hover:bg-white/[0.06] hover:shadow-lift">
+    <article className="card card-hover group flex h-full flex-col overflow-hidden">
       <Media
         {...mediaProps}
-        className={`relative block overflow-hidden bg-ink-800 ${
+        className={`relative block overflow-hidden bg-canvas-soft ${
           hasPhotos ? "aspect-[4/5]" : "aspect-[4/3]"
         }`}
       >
         <img
           src={src}
-          alt={
-            hasPhotos
-              ? `${product.name} — handmade crochet bag by Thyra World`
-              : `${product.name} — handmade ${product.category.toLowerCase()}`
-          }
+          alt={`${product.name} — handmade crochet by Thyra World`}
           className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
           loading="lazy"
         />
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink-900/90 via-ink-900/10 to-transparent" />
 
-        <div className="absolute left-3 top-3 flex flex-wrap gap-1.5">
-          {product.isCustomisable && (
-            <span className="rounded-full border border-yarn-coral/30 bg-ink-900/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-yarn-coral backdrop-blur">
-              Customisable
-            </span>
-          )}
-          {product.isHandmade && (
-            <span className="inline-flex items-center gap-1 rounded-full border border-white/12 bg-ink-900/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-bone-300 backdrop-blur">
-              <Sparkles aria-hidden="true" size={10} />
-              Handmade
-            </span>
-          )}
-        </div>
-
-        {hasPhotos && product.photos.length > 1 && (
-          <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-white/12 bg-ink-900/80 px-2.5 py-1 text-[10px] font-bold text-bone-200 backdrop-blur">
-            <Images aria-hidden="true" size={11} />
-            {product.photos.length}
+        {product.isCustomisable && (
+          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-candy-pink shadow-soft backdrop-blur">
+            Customisable
           </span>
         )}
 
-        {swatches.length > 0 && (
-          <div className="absolute bottom-3 left-3 flex gap-1.5">
-            {swatches.map((s) => (
-              <span
-                key={s.label}
-                title={s.label}
-                className="h-4 w-4 rounded-full border border-white/30 shadow-md"
-                style={{ background: s.hex }}
-              />
-            ))}
-          </div>
+        {hasPhotos && product.photos.length > 1 && (
+          <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold text-ink-500 shadow-soft backdrop-blur">
+            <Images aria-hidden="true" size={11} />
+            {product.photos.length}
+          </span>
         )}
       </Media>
 
       <div className="flex flex-1 flex-col p-4">
         <div className="mb-1.5 flex items-center justify-between gap-2">
-          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-yarn-coral">
+          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-candy-violet">
             {product.category}
           </p>
+          {swatches.length > 0 && (
+            <div className="flex gap-1">
+              {swatches.map((s) => (
+                <span
+                  key={s.label}
+                  title={s.label}
+                  className="h-3.5 w-3.5 rounded-full ring-1 ring-ink-200"
+                  style={{ background: s.hex }}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
-        <h3 className="font-display text-lg font-bold leading-tight text-bone-50">
+        <h3 className="font-display text-lg font-bold leading-tight text-ink-900">
           {hasPhotos ? (
-            <Link to={`/products/${product.id}`} className="transition hover:text-yarn-coral">
+            <Link to={`/products/${product.id}`} className="transition hover:text-candy-pink">
               {product.name}
             </Link>
           ) : (
@@ -95,7 +79,7 @@ export default function ProductCard({ product }) {
           )}
         </h3>
 
-        <p className="mt-2 flex-1 text-xs leading-5 text-bone-400">
+        <p className="mt-2 flex-1 text-xs leading-5 text-ink-500">
           {product.tagline || product.description}
         </p>
 
@@ -110,7 +94,7 @@ export default function ProductCard({ product }) {
             href={createWhatsAppLink(product.name)}
             target="_blank"
             rel="noreferrer"
-            variant={hasPhotos ? "ghost" : "primary"}
+            variant={hasPhotos ? "secondary" : "primary"}
             className="px-3 py-2.5 text-xs"
             aria-label={`Ask about ${product.name} on WhatsApp`}
           >
