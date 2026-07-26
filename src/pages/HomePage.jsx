@@ -55,10 +55,14 @@ export default function HomePage() {
           <div className="animate-fade-up">
             <span className="eyebrow">Handmade · Customisable · India-wide delivery</span>
 
-            <h1 className="mt-6 font-display text-[2.7rem] font-bold leading-[1.04] text-ink-900 sm:text-6xl">
+            {/* bg-clip-text crops descenders to the line box, so the gradient
+                span needs to be inline-block with room for the "y" in "joy". */}
+            <h1 className="mt-6 font-display text-[2.7rem] font-bold leading-[1.1] text-ink-900 sm:text-6xl">
               Handmade with love,
               <br />
-              <span className="text-candy">made for everyday joy</span>
+              <span className="text-candy inline-block pb-[0.12em] leading-[1.14]">
+                made for everyday joy
+              </span>
             </h1>
 
             <p className="mt-5 max-w-xl text-base leading-7 text-ink-500 sm:text-lg">

@@ -36,10 +36,16 @@ export default function ProductCard({ product }) {
           loading="lazy"
         />
 
-        {product.isCustomisable && (
-          <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-candy-pink shadow-soft backdrop-blur">
-            Customisable
+        {product.code ? (
+          <span className="absolute left-3 top-3 rounded-full bg-candy-gradient px-2.5 py-1 text-[10px] font-bold tracking-[0.14em] text-white shadow-pink">
+            {product.code}
           </span>
+        ) : (
+          product.isCustomisable && (
+            <span className="absolute left-3 top-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-candy-pink shadow-soft backdrop-blur">
+              Customisable
+            </span>
+          )
         )}
 
         {hasPhotos && product.photos.length > 1 && (
@@ -91,7 +97,7 @@ export default function ProductCard({ product }) {
             </Button>
           )}
           <Button
-            href={createWhatsAppLink(product.name)}
+            href={createWhatsAppLink(product.code ? `${product.code} (${product.name})` : product.name)}
             target="_blank"
             rel="noreferrer"
             variant={hasPhotos ? "secondary" : "primary"}

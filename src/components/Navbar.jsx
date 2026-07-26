@@ -42,9 +42,13 @@ export default function Navbar() {
           aria-label="Thyra World home"
           onClick={() => setIsOpen(false)}
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-candy-gradient text-lg font-bold text-white shadow-pink">
-            T
-          </span>
+          <img
+            src="/images/thyra-mark.png"
+            alt=""
+            className="h-10 w-auto"
+            width="66"
+            height="40"
+          />
           <span>
             <span className="block font-display text-lg font-bold leading-none text-ink-900">
               Thyra World

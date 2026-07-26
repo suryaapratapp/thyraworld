@@ -148,9 +148,16 @@ export default function ProductDetailPage() {
 
             {/* Details */}
             <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-candy-violet">
-                {product.category}
-              </p>
+              <div className="flex flex-wrap items-center gap-2.5">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-candy-violet">
+                  {product.category}
+                </p>
+                {product.code && (
+                  <span className="rounded-full bg-candy-gradient px-3 py-1 text-[11px] font-bold tracking-[0.14em] text-white shadow-pink">
+                    {product.code}
+                  </span>
+                )}
+              </div>
               <h1 className="mt-3 font-display text-3xl font-bold leading-[1.1] text-ink-900 sm:text-4xl">
                 {product.name}
               </h1>
@@ -204,7 +211,7 @@ export default function ProductDetailPage() {
 
               <div className="mt-8 grid gap-2.5 sm:grid-cols-2">
                 <Button
-                  href={createWhatsAppLink(product.name)}
+                  href={createWhatsAppLink(product.code ? `${product.code} (${product.name})` : product.name)}
                   target="_blank"
                   rel="noreferrer"
                   className="py-3.5"

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
+import CommunityPopup from "./components/CommunityPopup.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import ProductsPage from "./pages/ProductsPage.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
@@ -122,6 +123,7 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <CommunityPopup />
     </div>
   );
 }

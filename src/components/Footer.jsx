@@ -20,17 +20,12 @@ export default function Footer() {
     <footer className="relative mt-8 border-t border-ink-100 bg-canvas-soft">
       <div className="shell grid gap-10 py-12 md:grid-cols-[1.4fr_0.8fr_1fr]">
         <div>
-          <div className="mb-4 inline-flex items-center gap-2.5">
-            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-candy-gradient text-lg font-bold text-white shadow-pink">
-              T
-            </span>
-            <div>
-              <p className="font-display text-lg font-bold text-ink-900">Thyra World</p>
-              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-ink-400">
-                Handmade with love
-              </p>
-            </div>
-          </div>
+          <img
+            src="/images/thyra-logo.png"
+            alt="Thyra World"
+            className="mb-4 h-24 w-auto"
+            loading="lazy"
+          />
           <p className="max-w-sm text-sm leading-6 text-ink-500">
             Handmade crochet bags and accessories by Shubham Salehria — a women-led
             family brand, delivering across India.

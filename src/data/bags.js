@@ -21,6 +21,7 @@ const shots = (id, n) =>
 export const bags = [
   {
     id: "red-ribbed-shoulder-bag",
+    code: "SIA",
     name: "Scarlet Ribbed Shoulder Bag",
     tagline: "Deep red ribbing with a heart charm and pearl bow",
     category: "Bags",
@@ -41,6 +42,7 @@ export const bags = [
   },
   {
     id: "blossom-stripe-clutch",
+    code: "AIRA",
     name: "Blossom Stripe Clutch",
     tagline: "Pink and butter-yellow stripes with a flower garland",
     category: "Bags",
@@ -86,6 +88,7 @@ export const bags = [
   },
   {
     id: "sunset-knot-bag",
+    code: "RUE",
     name: "Sunset Knot Bag",
     tagline: "Orange and cream marl in a Japanese knot shape",
     category: "Bags",
@@ -108,6 +111,7 @@ export const bags = [
   },
   {
     id: "violet-bloom-bag",
+    code: "TAFFY",
     name: "Violet Bloom Top-Handle Bag",
     tagline: "Purple and white houndstooth with a crochet flower",
     category: "Bags",
@@ -152,6 +156,7 @@ export const bags = [
   },
   {
     id: "confetti-clutch",
+    code: "POPPY",
     name: "Confetti Clutch",
     tagline: "Rainbow flecks on a warm orange base",
     category: "Bags",
@@ -174,6 +179,7 @@ export const bags = [
   },
   {
     id: "graffiti-laceup-clutch",
+    code: "LUMI",
     name: "Graffiti Lace-Up Clutch",
     tagline: "Black body with red and white lacing",
     category: "Bags",
@@ -219,6 +225,7 @@ export const bags = [
   },
   {
     id: "bento-neutral",
+    code: "ZURI",
     name: "Bento Bag — Neutral Colourblock",
     tagline: "Cream, taupe, and charcoal in soft blocks",
     category: "Bags",
@@ -242,6 +249,7 @@ export const bags = [
   },
   {
     id: "bento-black-pearl",
+    code: "NOVA",
     name: "Bento Bag — Black & Pearl",
     tagline: "Deep black with a pearl-sequin edge",
     category: "Bags",
@@ -264,6 +272,7 @@ export const bags = [
   },
   {
     id: "midnight-round-hobo",
+    code: "ELVA",
     name: "Midnight Round Hobo",
     tagline: "A clean black crescent with a cut-out handle",
     category: "Bags",
@@ -283,6 +292,7 @@ export const bags = [
   },
   {
     id: "silver-sequin-chain-bag",
+    code: "IZA",
     name: "Silver Sequin Chain Bag",
     tagline: "Sequin shimmer on a delicate chain",
     category: "Bags",
@@ -305,6 +315,7 @@ export const bags = [
   },
   {
     id: "navy-ribbed-crossbody",
+    code: "NOX",
     name: "Navy Ribbed Crossbody",
     tagline: "Simple ribbed body on a long cord strap",
     category: "Bags",

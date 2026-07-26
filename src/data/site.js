@@ -14,6 +14,10 @@ export const shubhamInstagramProfile = "https://www.instagram.com/shubhamsalehri
 // Formspree endpoint backing every form on the site.
 export const formspreeEndpoint = "https://formspree.io/f/xlgqojwk";
 
+// Separate endpoint for the community sign-up popup, so those submissions stay
+// out of the main enquiry inbox.
+export const communityFormEndpoint = "https://formspree.io/f/xykrbqze";
+
 /**
  * The Contact page renders one form whose fields adapt to the chosen intent.
  * `value` is what lands in the Formspree submission, so keep these readable —
