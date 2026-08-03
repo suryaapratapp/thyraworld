@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, Loader2, Sparkles, X } from "lucide-react";
 import { communityFormEndpoint } from "../data/site.js";
+import { ThyraMark } from "./ThyraLogo.jsx";
 
 const STORAGE_KEY = "thyra-community-popup";
 const OPEN_DELAY_MS = 1400;
@@ -159,11 +160,7 @@ export default function CommunityPopup() {
             <div className="text-center">
               {/* Dropped on short viewports (small phones, landscape) so the
                   form still fits without scrolling. */}
-              <img
-                src="/images/thyra-mark.png"
-                alt=""
-                className="mx-auto mb-2.5 h-9 w-auto [@media(max-height:660px)]:hidden"
-              />
+              <ThyraMark className="mx-auto mb-2.5 h-10 w-10 [@media(max-height:660px)]:hidden" />
               <h2 id="community-title" className="font-display text-xl font-bold leading-tight text-ink-900 sm:text-2xl">
                 Join the <span className="text-candy">Thyra World</span> community
               </h2>

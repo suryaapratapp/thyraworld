@@ -2,6 +2,7 @@ import { Menu, MessageCircle, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "./Button.jsx";
+import { ThyraMark } from "./ThyraLogo.jsx";
 import { createWhatsAppLink } from "../data/site.js";
 
 const navItems = [
@@ -42,16 +43,10 @@ export default function Navbar() {
           aria-label="Thyra World home"
           onClick={() => setIsOpen(false)}
         >
-          <img
-            src="/images/thyra-mark.png"
-            alt=""
-            className="h-10 w-auto"
-            width="66"
-            height="40"
-          />
+          <ThyraMark className="h-9 w-9" />
           <span>
-            <span className="block font-display text-lg font-bold leading-none text-ink-900">
-              Thyra World
+            <span className="block font-display text-lg font-bold leading-none tracking-tight text-ink-900">
+              Thyra<span className="text-candy-pink">World</span>
             </span>
             <span className="mt-0.5 block text-[10px] font-bold uppercase tracking-[0.18em] text-ink-400">
               Handmade · India

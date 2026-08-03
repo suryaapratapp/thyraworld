@@ -1,5 +1,6 @@
 import { Instagram, Mail, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
+import { ThyraMark } from "./ThyraLogo.jsx";
 import {
   contactEmail,
   createWhatsAppLink,
@@ -20,12 +21,17 @@ export default function Footer() {
     <footer className="relative mt-8 border-t border-ink-100 bg-canvas-soft">
       <div className="shell grid gap-10 py-12 md:grid-cols-[1.4fr_0.8fr_1fr]">
         <div>
-          <img
-            src="/images/thyra-logo.png"
-            alt="Thyra World"
-            className="mb-4 h-24 w-auto"
-            loading="lazy"
-          />
+          <div className="mb-4 flex items-center gap-3">
+            <ThyraMark className="h-11 w-11" title="Thyra World" />
+            <div>
+              <p className="font-display text-xl font-bold leading-none tracking-tight text-ink-900">
+                Thyra<span className="text-candy-pink">World</span>
+              </p>
+              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] text-ink-400">
+                Handmade with love
+              </p>
+            </div>
+          </div>
           <p className="max-w-sm text-sm leading-6 text-ink-500">
             Handmade crochet bags and accessories by Shubham Salehria — a women-led
             family brand, delivering across India.
